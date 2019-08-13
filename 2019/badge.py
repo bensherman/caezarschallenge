@@ -117,10 +117,109 @@ the above gives us a phone number.
 
 12217762434
 
-this number is incorrect. We aren't sure if the algorithm is correct. the page changed to
-give us
+this number is incorrect. We aren't sure if the algorithm is correct.
+the page changed sometime on friday night to give us the number
 13217792124
 
 when called, it gives this url:
 https://iesnah.com/z/
+
+that gives us score.png
 """
+
+"""
+score.png is music in c scale. 7 bit hint at the bottom means we are looking at
+the distance beweent the notes.
+
+if we only pay attention to when the notes rise (1) and fall (0) in each bar, we get:
+1110100
+1110100
+1110100
+1111000
+-------
+1110011
+0101111
+0101111
+0101111
+-------
+1100010
+1101001
+1110100
+0101110
+-------
+1101100
+1111001
+0101111
+0110010
+-------
+1011001
+1000010
+0110001
+1011010
+-------
+0110101
+0110010
+"""
+
+bars = [0b1110100,
+        0b1110100,
+        0b1110100,
+        0b1111000,
+        0b1110011,
+        0b0101111,
+        0b0101111,
+        0b0101111,
+        0b1100010,
+        0b1101001,
+        0b1110100,
+        0b0101110,
+        0b1101100,
+        0b1111001,
+        0b0101111,
+        0b0110010,
+        0b1011001,
+        0b1000010,
+        0b0110001,
+        0b1011010,
+        0b0110101,
+        0b0110010]
+
+print("".join([chr(c) for c in bars]))
+
+"""
+the above gives us a url
+bit.ly/2YB1Z52
+which redirects us to
+
+https://youreinvited.to/a/party/4.6692/ saved to party.html
+
+this gives us some assembler (party.asm) when run drops the text that is the key on that page.
+"""
+
+print(
+"""
+  _______________________________________
+/ Congratulations! You have solved the   \\
+| invitation puzzles; now it's time for  |
+| the Challenge party. We are looking    |
+| forward to greeting you at the Hard    |
+| Rock Hotel on Saturday, August 10th at |
+| 9pm in the Real World Penthouse in the |
+\ Casino Tower - Room #1168.             /
+ ----------------------------------------
+\                             .       .
+ \                           / `.   .' "
+  \                  .---.  <    > <    >  .---.
+   \                 |    \  \ - ~ ~ - /  /    |
+         _____          ..-~             ~-..-~
+        |     |   \~~~\.'                    `./~~~/
+       ---------   \__/                        \__/
+      .'  O    \     /               /       \  "
+     (_____,    `._.'               |         }  \/~~~/
+      `----.          /       }     |        /    \__/
+            `-.      |       /      |       /      `. ,~~|
+                ~-.__|      /_ - ~ ^|      /- _      `..-'
+                     |     /        |     /     ~-.     `-. _  _  _
+                     |_____|        |_____|         ~ - . _ _ _ _ _>
+"""
+)
