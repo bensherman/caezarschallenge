@@ -34,8 +34,7 @@ badge = [b'yygybpgrrybggrggro',
          b'goygoygrbogboopoop',
          b'yppgryypbyprgrogyr',
          b'ypryproobybggrrgog',
-         b'ybyoopoyooggoopppp'
-         ]
+         b'ybyoopoyooggoopppp']
 
 table = bytes.maketrans(b'roygbp',
                         b'012345')
@@ -46,7 +45,7 @@ for row in badge:
     row = row.translate(table)
     for i in range(0, 18, 3):
         try:
-            n = int(row[i:i+3], 6)
+            n = int(row[i:i + 3], 6)
         except ValueError as e:
             print(e)
             print("row {}, i {}".format(row, i))
@@ -62,7 +61,10 @@ for row in trbadge:
 print()
 
 """
-here are the birthdays from "Long distance puzzle"
+the above gives a url, which if trimmed (the ppp doesn't match the pattern):
+http://www.knjfmxff.club/19/
+
+at first, it displayed a list of people. I've added their birthdays:
 
 Long Distance Puzzle
 
@@ -77,4 +79,48 @@ Al Gore             03/31/1948
 Marie Curie         11/07/1867
 Daniel Trejo        05/16/1944
 Aristotle           06/19/0384 (BC)
+
+adding the digits of the birthdays multiple times...
+
+"""
+
+bdays = ["12101815",
+         "10311959",
+         "12261791",
+         "07101856",
+         "01081942",
+         "02151934",
+         "02151564",
+         "03311948",
+         "11071867",
+         "05161944",
+         "06190384"]
+
+
+def sumdigits(s):
+    s = str(s)
+    sum = 0
+    for c in s:
+        sum += int(c)
+    return sum
+
+for bday in bdays:
+    sum = sumdigits(bday)
+    while sum > 9:
+        sum = sumdigits(sum)
+    print(sum, end="")
+print()
+
+
+"""
+the above gives us a phone number.
+
+12217762434
+
+this number is incorrect. We aren't sure if the algorithm is correct. the page changed to
+give us
+13217792124
+
+when called, it gives this url:
+https://iesnah.com/z/
 """
