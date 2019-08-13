@@ -193,7 +193,8 @@ which redirects us to
 
 https://youreinvited.to/a/party/4.6692/ saved to party.html
 
-this gives us some assembler (party.asm) when run drops the text that is the key on that page.
+this gives us some assembler (party.asm) when run with nasm drops the text
+that is the key on that page.
 """
 
 print(
