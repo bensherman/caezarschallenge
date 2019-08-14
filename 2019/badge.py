@@ -3,8 +3,11 @@ red orange yellow green blue purple
 
 each line is 18 chars long
 
-3 char chunks divided by 3
+3 char chunks, in base 6 encoding.
 
+the hard part was the data entry, though if I had more time, I would have used pil/pillow.
+
+TIL: int() lets you specify a base when you are casting from a string.
 
 """
 
@@ -36,6 +39,8 @@ badge = [b'yygybpgrrybggrggro',
          b'ypryproobybggrrgog',
          b'ybyoopoyooggoopppp']
 
+# we wern't sure if this was big/little endian or 0/1 indexed, so this made it super simple to
+# change on the fly.
 table = bytes.maketrans(b'roygbp',
                         b'012345')
 
@@ -47,6 +52,7 @@ for row in badge:
         try:
             n = int(row[i:i + 3], 6)
         except ValueError as e:
+            # a few data entry errors, and this told us where to look for them.
             print(e)
             print("row {}, i {}".format(row, i))
         newrow.append(n)
@@ -129,7 +135,7 @@ that gives us score.png
 
 """
 score.png is music in c scale. 7 bit hint at the bottom means we are looking at
-the distance beweent the notes.
+the distance between the notes.
 
 if we only pay attention to when the notes rise (1) and fall (0) in each bar, we get:
 1110100
